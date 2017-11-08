@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Right One</title>
+    <link rel="stylesheet" href="https://unpkg.com/mobi.css/dist/mobi.min.css">
+</head>
+<body>
+<div class="flex-center">
+    <div class="container">
+        <div class="profilecheck">
+            <form id="filter_form" method="GET" action="/search/">
+                <ul>
+                    <li class="profilecheck">
+                        <li>
+                            <label for='gender'>choose gender</label>
+                            <select name='gender' size=1>
+                                <option value="M"> Male </option>
+                                <option value="F"> Female </option>
+                                <option value="both"> Both </option>
+                            </select>
+                        </li>
+                        <li>
+                            <input id="onlychild" type="checkbox" name="onlychild" value="true">
+                            <label for="onlychild">The only child in family</label>
+                        </li>
+                        <li>
+                            <label for="age">age </label>
+                            <input id="age" type="text" name="age_from" placeholder="from"> - <input id="age" type="text" name="age_to" placeholder="to"><input type="submit" value="Submit"><input type="reset">
+                        </li>
+                        <li>
+                            <label for="weight">weight </label>
+                            <input id="weight" type="text" name="weight_from" placeholder="from"> - <input id="age" type="text" name="weight_to" placeholder="to"> <input type="submit" value="Submit"> <input type="reset">
+                        </li>
+                        <li>
+                            <label for="height">height </label>
+                            <input id="height" type="text" name="height_from" placeholder="from"> - <input id="age" type="text" name="height_to" placeholder="to"> <input type="submit" value="Submit"> <input type="reset">
+                        </li>
+                        <li>
+                            <label for='education'>choose education</label>
+                            <select id='education' name='edyf' size=1>
+                                <option value=0> Currently a Primary school pupil </option>
+                                <option value=1> Primary school </option>
+                                <option value=2> Secondary school </option>
+                                <option value=3> College/Bachelor degree </option>
+                                <option value=4> Master degree </option>
+                                <option value=5> Doctor's degree </option>
+                            </select>
+                            -
+                            <select id='education' name='edyt' size=1>
+                                <option value=0> Currently a Primary school pupil </option>
+                                <option value=1> Primary school </option>
+                                <option value=2> Secondary school </option>
+                                <option value=3> College/Bachelor degree </option>
+                                <option value=4> Master degree </option>
+                                <option value=5> Doctor's degree </option>
+                            </select>
+                        </li>
+                    </li>
+
+                    <li><a class="btn btn-success btn-xs" href="/search/">清除条件</a></li>
+                    <li><input type="submit" value="Submit"></li>
+
+                </ul>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="users">
+    <div class="container">
+        <div class='row'>
+            <main class="col-md-8">
+                {% for p in profile_list %}
+                    <span class="userid">{{ p.user.username }}</span><br>
+
+                {% empty %}
+                    <div class="nouser">Not Found</div>
+                {% endfor %}
+
+            </main>
+        </div>
+    </div>
+</div>
+</body>
+</html>
